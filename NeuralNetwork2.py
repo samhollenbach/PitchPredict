@@ -45,16 +45,14 @@ class Neural_Network(object):
     self.W2 = np.random.randn(self.hiddenSize, self.outputSize) # weight matrix from hidden to output layer
 
   def sigmoid(self, s):
-    # sig that moid!!1!
+    # sigmoid function for forward propagation
     return 1/(1+np.exp(-s))
 
   def sigmoidPrime(self, s):
-      # the sigged moid of the sig moid baby!
+      # derivative of sigmoid = rate of change for the activation function used for backwards propagation
       return s * (1 - s)
 
   def forward(self, X):
-    # if X.shape == (6,):     #  FUCK SOME OF THIS BS WAS TRYING SOME JENKY ASS SHIT TO TRY TO GET IT TO STOP GIV
-    #     X.shape = (6,1)     #ING ME STUPID ASS WHACK JESUS ERRORS I SWEAR
     #function to handle forward propagation
     self.z = np.dot(X, self.W1) # dot product of X (input) and first set of weights
     self.z2 = self.sigmoid(self.z) # activation function
