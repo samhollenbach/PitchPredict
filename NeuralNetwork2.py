@@ -36,9 +36,9 @@ def createData():
 class Neural_Network(object):
   def __init__(self):
     #parameters
-    self.inputSize = 5
+    self.inputSize = 6
     self.outputSize = 1
-    self.hiddenSize = 5
+    self.hiddenSize = 6
 
     #weights
     self.W1 = np.random.randn(self.inputSize, self.hiddenSize) # weight matrix from input to hidden layer
@@ -53,8 +53,8 @@ class Neural_Network(object):
       return s * (1 - s)
 
   def forward(self, X):
-    if X.shape == (6,):     #  FUCK SOME OF THIS BS WAS TRYING SOME JENKY ASS SHIT TO TRY TO GET IT TO STOP GIV
-        X.shape = (6,1)     #ING ME STUPID ASS WHACK JESUS ERRORS I SWEAR
+    # if X.shape == (6,):     #  FUCK SOME OF THIS BS WAS TRYING SOME JENKY ASS SHIT TO TRY TO GET IT TO STOP GIV
+    #     X.shape = (6,1)     #ING ME STUPID ASS WHACK JESUS ERRORS I SWEAR
     #function to handle forward propagation
     self.z = np.dot(X, self.W1) # dot product of X (input) and first set of weights
     self.z2 = self.sigmoid(self.z) # activation function
