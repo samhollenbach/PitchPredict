@@ -23,7 +23,7 @@ def createData():
             if line_count <= 1:
                 line_count += 1
             else:
-                pitch = list(row[1:6])
+                pitch = list(row[1:7])
                 pitchdat.append(pitch)
                 resultdat.append(list(row[7]))
                 line_count += 1
@@ -116,7 +116,7 @@ if __name__ == '__main__':
         #print("training\n")
         NN.train(X, y)
 
-    print(predictions[1])
+    print(NN.forward(xPredicted2))
     #NN.predict(np.array(([3,2,0,6,7,1]), dtype=float))
 
 
