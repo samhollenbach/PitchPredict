@@ -19,11 +19,13 @@ predictions = [] # Empty array to populate with the predictions from the
 
 #function to read in the data file and populate arrays with associated pitch vectors
 def createData():
-    with open('testJohnLesterData.csv') as csv_file:
+    with open('sampledpitches2017.csv') as csv_file:
         csv_reader = csv.reader(csv_file, delimiter=',')
         line_count = 0
 
         for row in csv_reader:
+            if line_count > 10000:
+                return
             if line_count <= 1:
                 line_count += 1
             else:
@@ -31,6 +33,7 @@ def createData():
                 pitchdat.append(pitch)
                 resultdat.append(list(row[7]))
                 line_count += 1
+
         print('done with file.')
 
 #X = X/np.amax(X, axis=0)
@@ -50,7 +53,9 @@ class Neural_Network(object):
 
   def sigmoid(self, s):
     # sigmoid function for forward propagation
-    return 1/(1+np.exp(-s))
+    signal = np.clip( s, -500, 500 )
+    signal = 1.0 / (1 + np.exp(-s))
+    return signal
 
   def sigmoidPrime(self, s):
       # derivative of sigmoid = rate of change for the activation function used for backwards propagation
@@ -110,15 +115,16 @@ if __name__ == '__main__':
 
 
     NN = Neural_Network()
-    for i in range(1000):  # trains the NN 1,000 times
+    NN.train(X, y)
+    #for i in range(1):  # trains the NN 1,000 times
         # print("Input: \n" + str(X))
         # print("Actual Output: \n" + str(y))
         # #print("Predicted Output: \n" + str(NN.forward(X)))
         # print("Loss: \n" + str(np.mean(np.square(y - NN.forward(X)))))  # mean sum squared loss
         #print("training\n")
-        NN.train(X, y)
+        #NN.train(X, y)
 
-    print(NN.forward(xPredicted2))
+    print(NN.forward(xPredicted))
     #NN.predict(np.array(([3,2,0,6,7,1]), dtype=float))
 
 
