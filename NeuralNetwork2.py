@@ -1,3 +1,5 @@
+# Created by Andy Hayes and Sam Hollenbach for the COMP 484 Final Project
+
 import numpy as np
 import csv
 
@@ -5,15 +7,17 @@ import csv
 # X = np.array(([1, .5, 3, 1, .275], [0, 1, 3, 1, .260], [3, .33, 2, 0, .300], [0, .0, 1, 0, .300],
 #               [2, 0.66, 4, 1, .237], [1, 0.8, 4, 0, .250]), dtype=float)
 # y = np.array(([1], [1], [0], [1], [1], [0]), dtype=float)
-xPredicted = np.array(([3,2,0,6,7,1]), dtype=float)
+
+xPredicted = np.array(([3,2,0,6,7,1]), dtype=float) # Pitch situation we are predicting for
 xPredicted2 = np.array(([0,0,0,1,0,0]), dtype=float)
 
-pitchdat = []
-resultdat = []
+pitchdat = [] # Create empty array to populate with pitch situation data vectors
 
-predictions = []
+resultdat = [] # Create empty array to store pitch results associated with the pitch situation input vectors
 
+predictions = [] # Empty array to populate with the predictions from the
 
+#function to read in the data file and populate arrays with associated pitch vectors
 def createData():
     with open('testJohnLesterData.csv') as csv_file:
         csv_reader = csv.reader(csv_file, delimiter=',')
